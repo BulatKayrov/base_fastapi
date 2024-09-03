@@ -15,12 +15,12 @@ class Settings(BaseSettings):
         env_prefix='APP_CONFIG__',
         env_nested_delimiter='__'
     )
-
+    base_dir: pathlib.Path = BASE_DIR
     run: RunConfig = RunConfig()
     db: DataBaseConfig = DataBaseConfig()
 
     @property
     def url(self):
         if self.run.debug:
-            return f'sqlite+aiosqlite://{BASE_DIR}/{self.db.db_name}.db'
+            return f'sqlite+aiosqlite:///{self.db.db_name}.sqlite3'
         return f'postgresql+asyncpg://{self.db.user}:{self.db.password}@{self.db.host}:{self.db.port}/{self.db.db_name}'
