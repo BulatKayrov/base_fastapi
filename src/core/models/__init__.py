@@ -6,6 +6,7 @@ from .helper import DatabaseHelper
 
 
 helper = DatabaseHelper(
+    debug=settings.run.debug,  # Use sqlite for debug mode, otherwise use PostgreSQL.
     url=settings.url,
     echo=settings.db.echo,
     pool_size=settings.db.pool_size,

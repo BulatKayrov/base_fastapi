@@ -5,5 +5,5 @@ class RunConfig(BaseModel):
     host: str = '0.0.0.0'
     port: int = 8000
     prefix: str = '/api'
-    debug: bool = True
+    debug: bool = False
 
